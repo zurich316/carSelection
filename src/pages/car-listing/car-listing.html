@@ -7,7 +7,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>carListing</ion-title>
+    <ion-buttons end >
+      <button ion-button 
+              (click)="compareSelectedCars()"
+              [disabled]="carsChecked.length==0">
+        Compare ({{carsChecked.length}} ) 
+        <ion-icon ></ion-icon>
+      </button>
+      <button ion-button 
+              (click)="unCheckAll()">
+        Un check
+        <ion-icon ></ion-icon>
+      </button>      
+    </ion-buttons>
+    <ion-title>Car listing</ion-title>
   </ion-navbar>
 
 </ion-header>

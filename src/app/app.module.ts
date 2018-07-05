@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 
 // pages
+import { CarComparationPage } from '../pages/car-comparation/car-comparation';
 import { CarListingPage } from '../pages/car-listing/car-listing';
 
 // Services
@@ -15,6 +16,7 @@ import { CarModelProvider } from '../providers/car-model/car-model';
 @NgModule({
   declarations: [
     MyApp,
+    CarComparationPage,
     CarListingPage
   ],
   imports: [
@@ -24,6 +26,7 @@ import { CarModelProvider } from '../providers/car-model/car-model';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    CarComparationPage,
     CarListingPage
   ],
   providers: [

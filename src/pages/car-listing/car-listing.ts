@@ -5,6 +5,8 @@ import { car} from "../../model/model.car";
 
 import { CarModelProvider } from "../../providers/car-model/car-model"
 
+import { CarComparationPage } from "../car-comparation/car-comparation"
+
 @IonicPage()
 @Component({
   selector: 'page-car-listing',
@@ -38,6 +40,21 @@ export class CarListingPage {
       this.listDisabled=false;
     }
     
+  }
+
+  compareSelectedCars(){
+    this.navCtrl.push(
+      CarComparationPage,
+      {
+        carList: this.carsChecked
+      }
+    );
+  }
+
+  unCheckAll(){
+    this.cars.forEach((car:any)=>{
+      car.checked = false;
+    })
   }
 
 }
