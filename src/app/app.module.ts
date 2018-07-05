@@ -9,6 +9,9 @@ import { MyApp } from './app.component';
 // pages
 import { CarListingPage } from '../pages/car-listing/car-listing';
 
+// Services
+import { CarModelProvider } from '../providers/car-model/car-model';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -26,7 +29,8 @@ import { CarListingPage } from '../pages/car-listing/car-listing';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CarModelProvider
   ]
 })
 export class AppModule {}

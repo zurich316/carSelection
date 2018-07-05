@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the CarListingPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
+import { cars} from "../../data/data.cars";
+
+
+import { CarModelProvider } from "../../providers/car-model/car-model"
 
 @IonicPage()
 @Component({
@@ -15,11 +14,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CarListingPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  cars:cars[] = [];
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public  _carsModel: CarModelProvider) {
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CarListingPage');
+    this.cars = this._carsModel.carList;
+    console.log(this.cars);
+
   }
 
 }
