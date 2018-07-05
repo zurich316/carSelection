@@ -15,13 +15,18 @@
 
 <ion-content padding>
 
-  <ion-item *ngFor="let car of cars"> 
+  <ion-item *ngFor="let car of cars" > 
     <ion-label>
       <p>Modelo: {{car.model}}</p>
       <p>Price: {{car.price}}</p>
-      <p>Color {{car.color}}  </p>
+      <p>Color: {{car.color}}  </p>
     </ion-label>
-    <ion-checkbox color="blue"></ion-checkbox>
+    <ion-checkbox  [disabled]="listDisabled && !car.checked"  
+                   (ionChange)="checked(car)"
+                   [(ngModel)]="car.checked"  
+                   color="blue" 
+                   item-right>                 
+    </ion-checkbox>
   </ion-item>
 
 </ion-content>
