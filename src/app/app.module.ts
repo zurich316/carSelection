@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 // pages
 import { CarComparationPage } from '../pages/car-comparation/car-comparation';
 import { CarListingPage } from '../pages/car-listing/car-listing';
+import { CarPopoverPage } from '../pages/car-popover/car-popover';
 
 // Services
 import { CarModelProvider } from '../providers/car-model/car-model';
@@ -17,7 +18,8 @@ import { CarModelProvider } from '../providers/car-model/car-model';
   declarations: [
     MyApp,
     CarComparationPage,
-    CarListingPage
+    CarListingPage,
+    CarPopoverPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { CarModelProvider } from '../providers/car-model/car-model';
   entryComponents: [
     MyApp,
     CarComparationPage,
-    CarListingPage
+    CarListingPage,
+    CarPopoverPage
   ],
   providers: [
     StatusBar,

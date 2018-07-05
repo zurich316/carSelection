@@ -204,7 +204,7 @@ export const cars:car[] = [
    {
      model: "Renault",
      price: 7493,
-     color: "yellow"
+     color: "red"
    },
    {
      model: "Honda",

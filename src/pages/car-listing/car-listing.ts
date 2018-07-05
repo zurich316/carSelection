@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController, LoadingController } from 'ionic-angular';
 
+// Model
 import { car} from "../../model/model.car";
 
+// Services
 import { CarModelProvider } from "../../providers/car-model/car-model"
 
+//pages
 import { CarComparationPage } from "../car-comparation/car-comparation"
+import { CarPopoverPage } from '../car-popover/car-popover'
 
 @IonicPage()
 @Component({
@@ -21,9 +25,11 @@ export class CarListingPage {
   
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public  _carsModel: CarModelProvider) {
+              private popOverCtrl :PopoverController,
+              private loadCtrl:LoadingController,
+              private  _carsModel: CarModelProvider) {
 
-    this.cars = this._carsModel.carList;
+    this.cars = this._carsModel.getCarList();
 
   }
 
@@ -57,4 +63,30 @@ export class CarListingPage {
     })
   }
 
+  showOptions(myEvent){
+    let popover = this.popOverCtrl.create(CarPopoverPage);
+    popover.present({
+      ev: myEvent
+    });
+
+    popover.onDidDismiss(result=>{
+      
+
+      if(result){
+        let loading = this.loadCtrl.create({
+          content: "Wait a moment..."
+        });
+
+        loading.present();
+
+        this.unCheckAll();
+        this.carsChecked = [];
+        
+        this.cars = result;
+
+        loading.dismiss();
+      }
+      
+    });
+  }
 }

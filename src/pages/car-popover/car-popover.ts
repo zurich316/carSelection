@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
-/**
- * Generated class for the CarPopoverPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+//Model
+import { colors } from '../../data/data.colors'
+
+// Services
+import { CarModelProvider } from "../../providers/car-model/car-model"
 
 @IonicPage()
 @Component({
@@ -15,11 +15,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CarPopoverPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  optionColors:string[]=colors;
+
+  private todo : FormGroup;
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              private viewCtrl :ViewController,
+              private formBuilder: FormBuilder,
+              private  _carsModel: CarModelProvider) {
+    this.todo = this.formBuilder.group({
+       model:[""],
+       priceMore: [],
+       priceLess: [],
+       color: [""],
+     });
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CarPopoverPage');
+  searchCars(){
+    let searchForm = this.todo.value;
+    let searchCarsList = (this._carsModel.searchCars(searchForm));
+    this.viewCtrl.dismiss(searchCarsList);
   }
 
+  allCars(){
+    this.viewCtrl.dismiss(this._carsModel.getCarList());
+  }
 }
